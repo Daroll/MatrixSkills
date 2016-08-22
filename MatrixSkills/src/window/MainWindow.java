@@ -1,6 +1,7 @@
 package window;
 
 import java.awt.EventQueue;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,12 +9,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
-public class MainWindow {
+public class MainWindow extends JMenuBar {
 	
 	private JFrame frame;
 	private JButton btnNewUser, btnButton, btnClose;
-	private JMenu mFile, mUsers, mAbout, mSkills;
+	private JMenu mFile, mAbout;
+	String[ ] fileItems = new String[ ] { "Table" };
+
 	
 				// uruchomienie //
 	public static void main(String[] args){
@@ -35,10 +39,11 @@ public MainWindow(){
 				// inicjalizacja ramki//
 
 private void initialize() {
+    GridLayout gridLayout = new GridLayout(3,1);
 	frame = new JFrame("Skills Matrix"); // nazwa okna
 	frame.setSize(300, 300);			//wielkosc okna 
 	frame.setLocationRelativeTo(null);	//
-	frame.setResizable(false);  		 //okno nie zmienia rozmiarow
+	frame.setResizable(true);  		 //okno nie zmienia rozmiarow
 	
 	frame.getContentPane().setLayout(null); 
 	
@@ -49,6 +54,30 @@ private void initialize() {
 	mFile = new JMenu("File");		//File Menu
 	menuBar.add(mFile);
 	
+	ActionListener printListener = new ActionListener(  ) {
+        public void actionPerformed(ActionEvent event) {
+         
+        }
+     };
+     for (int i=0; i < fileItems.length; i++) {
+        JMenuItem item = new JMenuItem(fileItems[i]);
+        mFile.add(item);
+
+        
+        mAbout = new JMenu("About");  
+        menuBar.add(mAbout);
+        
+        JMenuItem mntmAbout = new JMenuItem("About");
+        mntmAbout.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) {
+          new AboutWindow();
+          frame.setVisible(false);
+          window.AboutWindow.main(null);
+          }
+              });
+        mntmAbout.setToolTipText("Information about application");
+        mAbout.add(mntmAbout);
+	
 	//dodwanie nowego pracownika
 	
 	btnNewUser = new JButton("New User");
@@ -57,7 +86,7 @@ private void initialize() {
 		public void actionPerformed(ActionEvent e) {
 			new NewUser();
 			frame.setVisible(false);
-			window.NewUser.main(null);
+				
 			
 		}
 	});
@@ -83,4 +112,5 @@ private void initialize() {
 		btnClose.setToolTipText("Close App");
 		frame.getContentPane().add(btnClose);
 	}
+}
 }
