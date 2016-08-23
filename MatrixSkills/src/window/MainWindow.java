@@ -12,10 +12,11 @@ import javax.swing.JMenuBar;
 public class MainWindow {
 	
 	private JFrame frame;
-	private JButton btnNewUser, btnButton, btnClose;
+	private JButton btnNewUser, btnReport, btnClose;
 	private JMenu mFile;
 	
 				// uruchomienie //
+	
 	public static void main(String[] args){
 		 
 		 EventQueue.invokeLater(new Runnable()
@@ -64,11 +65,20 @@ private void initialize() {
 	btnNewUser.setToolTipText("Adds New User");
 	frame.getContentPane().add(btnNewUser);
 	
-	//cos tu bedzie
+	//raport wyswietlajacu uzytkownikow + pozniej ze skillami
 	
-	btnButton = new JButton("Jakis knefel");
-	btnButton.setBounds(75,100,150,30);
-	frame.getContentPane().add(btnButton);
+	btnReport = new JButton("Report");
+	btnReport.setBounds(75,100,150,30);
+	btnReport.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			new NewUser();
+			frame.setVisible(false);
+			window.UserList.main(null);
+		}
+	});
+	btnReport.setToolTipText("Show Report");
+	frame.getContentPane().add(btnReport);
+	
 	
 	//zamkniecie apki
 	

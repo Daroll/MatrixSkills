@@ -20,7 +20,7 @@ import sql.User;
 public class NewUser { 
 
 	private JFrame frame;
-	private JButton btnCancel, btnNext, btnAddUser;
+	private JButton btnMenu, btnNext, btnAddUser;
 	
 	//uruchomienie
 	
@@ -126,17 +126,17 @@ public class NewUser {
 	frame.getContentPane().add(btnAddUser);
 // Powrot do menu
 	
-	btnCancel = new JButton("Cancel");
-	btnCancel.setBounds(20, 385, 80, 50);
-	btnCancel.addActionListener(new ActionListener() {
+	btnMenu = new JButton("Menu");
+	btnMenu.setBounds(20, 385, 80, 50);
+	btnMenu.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			frame.setVisible(false);
 			window.MainWindow.main(null);	
 			
 		}
 		});
-		frame.getContentPane().add(btnCancel);
-		btnCancel.setToolTipText("Go back to Menu");
+		frame.getContentPane().add(btnMenu);
+		btnMenu.setToolTipText("Go back to Menu");
 
 	
 }
