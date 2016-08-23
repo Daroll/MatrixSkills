@@ -1,22 +1,25 @@
 package window;
 
 import java.awt.EventQueue;
-import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JSeparator;
+import javax.swing.KeyStroke;
 
 public class MainWindow extends JMenuBar {
 	
 	private JFrame frame;
-	private JButton btnNewUser, btnButton, btnClose;
+	private JButton btnNewUser, btnReport, btnClose;
 	private JMenu mFile, mAbout;
-	String[ ] fileItems = new String[ ] { "Table" };
 
 	
 				// uruchomienie //
@@ -39,8 +42,7 @@ public MainWindow(){
 				// inicjalizacja ramki//
 
 private void initialize() {
-    GridLayout gridLayout = new GridLayout(3,1);
-	frame = new JFrame("Skills Matrix"); // nazwa okna
+    frame = new JFrame("Skills Matrix"); // nazwa okna
 	frame.setSize(300, 300);			//wielkosc okna 
 	frame.setLocationRelativeTo(null);	//
 	frame.setResizable(true);  		 //okno nie zmienia rozmiarow
@@ -50,24 +52,64 @@ private void initialize() {
 	//gorne menu
 	JMenuBar menuBar = new JMenuBar();
 	frame.setJMenuBar(menuBar);
+	frame.setIconImage(new javax.swing.ImageIcon(getClass().getResource("Siimage.png")).getImage());
+
 	
+	// menu File
 	mFile = new JMenu("File");		//File Menu
 	menuBar.add(mFile);
+	ImageIcon iconAdd =new ImageIcon(getClass().getResource("users.png") ); //ikony do menu 18x18px
+	ImageIcon iconReport =new ImageIcon(getClass().getResource("notepad.png") );
+	ImageIcon iconExit =new ImageIcon(getClass().getResource("exit.png") );
+	ImageIcon iconAbout =new ImageIcon(getClass().getResource("agenda.png") );
 	
-	ActionListener printListener = new ActionListener(  ) {
-        public void actionPerformed(ActionEvent event) {
-         
-        }
-     };
-     for (int i=0; i < fileItems.length; i++) {
-        JMenuItem item = new JMenuItem(fileItems[i]);
-        mFile.add(item);
+    JMenuItem mntmNewUser = new JMenuItem("New User", iconAdd);
+    mntmNewUser.addActionListener(new ActionListener() {
+     public void actionPerformed(ActionEvent e) {
+      new NewUser();
+      frame.setVisible(false);
+      window.NewUser.main(null);
+      }
+          });
+    mntmNewUser.setToolTipText("Adds New User");
+    mntmNewUser.setAccelerator(KeyStroke.getKeyStroke(
+            KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+    mFile.add(mntmNewUser);
+    
 
-        
+    JMenuItem mntmReport = new JMenuItem("Report", iconReport);
+    mntmReport.addActionListener(new ActionListener() {
+     public void actionPerformed(ActionEvent e) {
+      new Report();
+      frame.setVisible(false);
+      window.Report.main(null);
+      }
+          });
+    mntmReport.setToolTipText("Show Report");
+    mntmReport.setAccelerator(KeyStroke.getKeyStroke(  	// skrót klawiszowy
+       KeyEvent.VK_R, ActionEvent.CTRL_MASK));
+    mFile.add(mntmReport);
+    
+    JSeparator separator = new JSeparator();
+    mFile.add(separator);
+    
+    
+    JMenuItem mntmClose = new JMenuItem("Close", iconExit);
+    mntmClose.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			System.exit(0);
+		}
+		});
+		mntmClose.setToolTipText("Close App");
+		mntmClose.setAccelerator(KeyStroke.getKeyStroke(	// skrót klawiszowy
+	    KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		mFile.add(mntmClose);
+  
+	// menu About
         mAbout = new JMenu("About");  
         menuBar.add(mAbout);
         
-        JMenuItem mntmAbout = new JMenuItem("About");
+        JMenuItem mntmAbout = new JMenuItem("About", iconAbout);
         mntmAbout.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) {
           new AboutWindow();
@@ -76,28 +118,40 @@ private void initialize() {
           }
               });
         mntmAbout.setToolTipText("Information about application");
+        mntmAbout.setAccelerator(KeyStroke.getKeyStroke(	// skrót klawiszowy
+		KeyEvent.VK_A, ActionEvent.CTRL_MASK));
         mAbout.add(mntmAbout);
+        
 	
 	//dodwanie nowego pracownika
 	
-	btnNewUser = new JButton("New User");
-	btnNewUser.setBounds(75, 60,150,30);
-	btnNewUser.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			new NewUser();
-			frame.setVisible(false);
-				
-			
-		}
-	});
-	btnNewUser.setToolTipText("Adds New User");
-	frame.getContentPane().add(btnNewUser);
+    	btnNewUser = new JButton("New User");
+    	btnNewUser.setBounds(75, 60,150,30);
+    	btnNewUser.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent e) {
+    			new NewUser();
+    			frame.setVisible(false);
+    			window.NewUser.main(null);
+    			
+    		}
+    	});
+    	btnNewUser.setToolTipText("Adds New User");
+    	frame.getContentPane().add(btnNewUser);
 	
 	//cos tu bedzie
 	
-	btnButton = new JButton("Jakis knefel");
-	btnButton.setBounds(75,100,150,30);
-	frame.getContentPane().add(btnButton);
+	btnReport = new JButton("Report");
+	btnReport.setBounds(75,100,150,30);
+	btnReport.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			new NewUser();
+			frame.setVisible(false);
+			window.Report.main(null);
+			
+		}
+	});
+	btnReport.setToolTipText("Show Report");
+	frame.getContentPane().add(btnReport);
 	
 	//zamkniecie apki
 	
@@ -112,5 +166,4 @@ private void initialize() {
 		btnClose.setToolTipText("Close App");
 		frame.getContentPane().add(btnClose);
 	}
-}
 }

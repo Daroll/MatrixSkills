@@ -1,13 +1,15 @@
 package window;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
+
 
 public class AboutWindow extends JFrame{
  
@@ -43,9 +45,16 @@ public class AboutWindow extends JFrame{
   frame.setResizable(false);
   
   
+//ikona
+  frame.setIconImage(new javax.swing.ImageIcon(getClass().getResource("Siimage.png")).getImage());
+
   label = new JLabel("");
+  Image img = new ImageIcon(this.getClass().getResource("Siimage.png")).getImage();
+  label.setIcon(new ImageIcon(img));
+  
   label.setBounds(70, 10, 140, 100);
   frame.getContentPane().add(label);
+  
   about = new JLabel("Sii Skill Matrix ver. 0.1 \n\n");
   about.setBounds(10, 130, 260, 80);
   about.setBackground(null);
