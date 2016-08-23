@@ -52,7 +52,7 @@ public class AboutWindow extends JFrame{
   Image img = new ImageIcon(this.getClass().getResource("Siimage.png")).getImage();
   label.setIcon(new ImageIcon(img));
   
-  label.setBounds(70, 10, 140, 100);
+  label.setBounds(70, 20, 140, 100);
   frame.getContentPane().add(label);
   
   about = new JLabel("Sii Skill Matrix ver. 0.1 \n\n");

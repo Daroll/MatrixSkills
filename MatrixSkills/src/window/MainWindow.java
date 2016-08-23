@@ -1,6 +1,7 @@
 package window;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -43,9 +45,9 @@ public MainWindow(){
 
 private void initialize() {
     frame = new JFrame("Skills Matrix"); // nazwa okna
-	frame.setSize(300, 300);			//wielkosc okna 
+	frame.setSize(300, 400);			//wielkosc okna 
 	frame.setLocationRelativeTo(null);	//
-	frame.setResizable(true);  		 //okno nie zmienia rozmiarow
+	frame.setResizable(false);  		 //okno nie zmienia rozmiarow
 	
 	frame.getContentPane().setLayout(null); 
 	
@@ -122,11 +124,19 @@ private void initialize() {
 		KeyEvent.VK_A, ActionEvent.CTRL_MASK));
         mAbout.add(mntmAbout);
         
+        
+        JLabel logo = new JLabel("");
+        Image img = new ImageIcon(this.getClass().getResource("Siimage.png")).getImage();
+        logo.setIcon(new ImageIcon(img));
+        
+        logo.setBounds(70, 10, 140, 100);
+        frame.getContentPane().add(logo);
 	
 	//dodwanie nowego pracownika
 	
     	btnNewUser = new JButton("New User");
-    	btnNewUser.setBounds(75, 60,150,30);
+    	btnNewUser.setBounds(75, 140, 150, 40);
+    	btnNewUser.setFont(new Font("Calibri", Font.PLAIN, 25));
     	btnNewUser.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
     			new NewUser();
@@ -141,7 +151,8 @@ private void initialize() {
 	//cos tu bedzie
 	
 	btnReport = new JButton("Report");
-	btnReport.setBounds(75,100,150,30);
+	btnReport.setBounds(75,210,150,40);
+	btnReport.setFont(new Font("Calibri", Font.PLAIN, 25));
 	btnReport.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			new NewUser();
@@ -156,7 +167,8 @@ private void initialize() {
 	//zamkniecie apki
 	
 	btnClose = new JButton("Close");
-	btnClose.setBounds(75,140,150,30);
+	btnClose.setBounds(75,280,150,40);
+	btnClose.setFont(new Font("Calibri", Font.PLAIN, 25));
 	frame.getContentPane().add(btnClose);
 	btnClose.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
