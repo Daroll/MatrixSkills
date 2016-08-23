@@ -10,13 +10,15 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import sql.BaseOperation;
+import sql.Operation;
+import sql.User;
+
+
 
 
 
 public class NewUser { 
 
-	public static String NameOwner;
 	private JFrame frame;
 	private JButton btnCancel, btnNext, btnAddUser;
 	
@@ -41,7 +43,7 @@ public class NewUser {
 
 //inicjalizacja ramki
 
-	private void initialize(JButton btnDodaj) {
+	public void initialize() {
 	frame = new JFrame("Add New User");
 	frame.setSize(500,500);
 	frame.setLocationRelativeTo(null);
@@ -57,7 +59,7 @@ public class NewUser {
 	name.setBounds(20, 10, 70, 20);
 	frame.getContentPane().add(name);
 	
-	JTextField nameField = new JTextField("");
+	final JTextField nameField = new JTextField("");
 	nameField.setBounds(100, 10, 300, 20);
 	frame.getContentPane().add(nameField);
 	
@@ -67,7 +69,7 @@ public class NewUser {
 	surname.setBounds(20, 40, 70, 20);
 	frame.getContentPane().add(surname);
 	
-	JTextField surnameField = new JTextField ("");
+	final JTextField surnameField = new JTextField ("");
 	surnameField.setBounds(100, 40, 300, 20);
 	frame.getContentPane().add(surnameField);
 	
@@ -77,7 +79,7 @@ public class NewUser {
 	experience.setBounds(20, 70, 70, 20);
 	frame.getContentPane().add(experience);
 	
-	JTextField experienceField = new JTextField ("");
+	final JTextField experienceField = new JTextField ("");
 	experienceField.setBounds(100, 70, 30, 20);
 	frame.getContentPane().add(experienceField);
 	
@@ -91,7 +93,7 @@ public class NewUser {
 	info2.setBounds(20, 115, 70, 20);
 	frame.getContentPane().add(info2);
 	
-	JTextArea infoArea = new JTextArea ("");
+	final JTextArea infoArea = new JTextArea ("");
 	infoArea.setBounds(100, 100, 300, 50);
 	frame.getContentPane().add(infoArea);
 	
@@ -101,24 +103,25 @@ public class NewUser {
 	btnNext.setBounds(400, 385, 70, 50);
 	frame.getContentPane().add(btnNext);
 	
-// tymczasowe dodanie do bazy
+// tymczasowe dodanie do
 	
-	btnAddUser = new JButton("Nowy");
+	btnAddUser = new JButton("Dodaj");
 	btnAddUser.setBounds(200, 385, 70, 50);
 	btnAddUser.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			
-			User newUser = new USer();
+			User newUser = new User();
 			newUser.setUserName(nameField.getText());
 			newUser.setUserSurname(surnameField.getText());
+			newUser.setUserExperience(experienceField.getText());
 			newUser.setUserInfo(infoArea.getText());
-			BaseOperation.addUser(newUser);
+			Operation.addUser(newUser);
 			frame.setVisible(false);
-			window.MainWindow.main(null);
+			window.NewUser.main(null);
 		}
 		});
-	
-	btnAddUser.setToolTipText("Add new owner");
+
+	btnAddUser.setToolTipText("Add new user");
 	
 	frame.getContentPane().add(btnAddUser);
 // Powrot do menu

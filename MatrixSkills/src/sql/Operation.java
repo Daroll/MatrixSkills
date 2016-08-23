@@ -2,25 +2,18 @@ package sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
 
-import window.NewUser;
 
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JComboBox;
-
-import java.sql.ResultSet;
 
 public class Operation {
 	
 	static String host = "jdbc:sqlserver://localhost:1433;databaseName=SM";
-    static String user = "Tester";
-    static String password = "Kafar15";
+    static String user = "sa";
+    static String password = "bartuS15";
     static Connection con = null;
     
     
@@ -44,14 +37,14 @@ public class Operation {
     
 
 
-public static void addNewUser(NewUser newNewUser) 
+public static void addUser (User newUser) 
 {
 	try {
 			
 		Statement stmt = connectBase();
-			stmt.executeUpdate("INSERT NewUser VALUES ('"+NewUser.NameOwner+"' , '"+NewUser.AddressOwner+"', '"+NewUser.InfoOwner+"')");
+		stmt.execute("INSERT INTO [User] VALUES ('"+newUser.UserName+"', '"+newUser.UserSurname+"', "+newUser.UserExperience+", '"+newUser.UserInfo+"')");
 			} catch (SQLException e) {
-		System.out.println("This owner exist" +e);
+		System.out.println("This user exist" +e);
 }
 }
 }

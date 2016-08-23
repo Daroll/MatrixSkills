@@ -13,7 +13,7 @@ public class MainWindow {
 	
 	private JFrame frame;
 	private JButton btnNewUser, btnButton, btnClose;
-	private JMenu mFile, mUsers, mAbout, mSkills;
+	private JMenu mFile;
 	
 				// uruchomienie //
 	public static void main(String[] args){
@@ -38,7 +38,7 @@ private void initialize() {
 	frame = new JFrame("Skills Matrix"); // nazwa okna
 	frame.setSize(300, 300);			//wielkosc okna 
 	frame.setLocationRelativeTo(null);	//
-	frame.setResizable(false);  		 //okno nie zmienia rozmiarow
+	frame.setResizable(true);  		 //okno nie zmienia rozmiarow
 	
 	frame.getContentPane().setLayout(null); 
 	
@@ -84,3 +84,4 @@ private void initialize() {
 		frame.getContentPane().add(btnClose);
 	}
 }
+
