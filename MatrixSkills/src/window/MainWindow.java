@@ -129,13 +129,13 @@ private void initialize() {
         Image img = new ImageIcon(this.getClass().getResource("Siimage.png")).getImage();
         logo.setIcon(new ImageIcon(img));
         
-        logo.setBounds(225, 20, 140, 100);
+        logo.setBounds(225, 50, 140, 100);
         frame.getContentPane().add(logo);
 	
 	//dodwanie nowego pracownika
 	
     	btnNewUser = new JButton("New User");
-    	btnNewUser.setBounds(187, 170, 226, 40);
+    	btnNewUser.setBounds(187, 200, 226, 40);
     	btnNewUser.setFont(new Font("Calibri", Font.BOLD, 20));
     	btnNewUser.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
@@ -151,7 +151,7 @@ private void initialize() {
 	//cos tu bedzie
 	
 	btnReport = new JButton("Report");
-	btnReport.setBounds(187,240,226,40);
+	btnReport.setBounds(187,270,226,40);
 	btnReport.setFont(new Font("Calibri", Font.BOLD, 20));
 	btnReport.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -167,7 +167,7 @@ private void initialize() {
 	//zamkniecie apki
 	
 	btnClose = new JButton("Close");
-	btnClose.setBounds(187,310,226,40);
+	btnClose.setBounds(187,340,226,40);
 	btnClose.setFont(new Font("Calibri", Font.BOLD, 20));
 	frame.getContentPane().add(btnClose);
 	btnClose.addActionListener(new ActionListener() {

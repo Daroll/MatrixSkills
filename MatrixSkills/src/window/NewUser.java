@@ -1,6 +1,7 @@
 package window;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -12,10 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 import sql.User;
 
@@ -28,6 +32,7 @@ public class NewUser {
 	private JFrame frame;
 	private JButton btnCancel, btnAddUser;
 	private JMenu mFile, mAbout;
+	private JScrollPane jScrollPane1;
 	
 	//uruchomienie
 	
@@ -135,53 +140,71 @@ public class NewUser {
 
 //Pole imie
 
-	JLabel name = new JLabel("Name");
-	name.setBounds(20, 10, 70, 20);
+	JLabel name = new JLabel("Name:");
+	name.setBounds(55, 50, 70, 20);
+	name.setFont(new Font("Calibri", Font.PLAIN, 20));
 	frame.getContentPane().add(name);
 	
 	final JTextField nameField = new JTextField("");
-	nameField.setBounds(100, 10, 300, 20);
+	nameField.setBounds(120, 40, 350, 40);
+	nameField.setFont(new Font("Calibri", Font.PLAIN, 20));
 	frame.getContentPane().add(nameField);
 	
 //Naziwsko
 	
-	JLabel surname = new JLabel ("Surname");
-	surname.setBounds(20, 40, 70, 20);
+	JLabel surname = new JLabel ("Surname:");
+	surname.setBounds(30, 110, 100, 20);
+	surname.setFont(new Font("Calibri", Font.PLAIN, 20));
 	frame.getContentPane().add(surname);
 	
 	final JTextField surnameField = new JTextField ("");
-	surnameField.setBounds(100, 40, 300, 20);
+	surnameField.setBounds(120, 100, 350, 40);
+	surnameField.setFont(new Font("Calibri", Font.PLAIN, 20));
 	frame.getContentPane().add(surnameField);
 	
 // Sta¿ - nazewnictwo do zmiany
 	
-	JLabel experience = new JLabel ("Experience");
-	experience.setBounds(20, 70, 70, 20);
+	JLabel experience = new JLabel ("Experience:");
+	experience.setBounds(15, 170, 100, 20);
+	experience.setFont(new Font("Calibri", Font.PLAIN, 20));
 	frame.getContentPane().add(experience);
 	
 	final JTextField experienceField = new JTextField ("");
-	experienceField.setBounds(100, 70, 30, 20);
+	experienceField.setBounds(120, 160, 50, 40);
+	experienceField.setFont(new Font("Calibri", Font.PLAIN, 20));
 	frame.getContentPane().add(experienceField);
 	
 // Pole na inf
 	
 	JLabel info = new JLabel ("Additional");
-	info.setBounds(20, 100, 70, 20);
+	info.setBounds(15, 220, 140, 20);
+	info.setFont(new Font("Calibri", Font.PLAIN, 20));
 	frame.getContentPane().add(info);
 	
 	JLabel info2 = new JLabel ("Information");
-	info2.setBounds(20, 115, 70, 20);
+	info2.setBounds(15, 240, 140, 20);
+	info2.setFont(new Font("Calibri", Font.PLAIN, 20));
 	frame.getContentPane().add(info2);
 	
 	final JTextArea infoArea = new JTextArea ("");
-	infoArea.setBounds(100, 100, 300, 50);
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    infoArea.setColumns(20);
+    infoArea.setLineWrap(true);
+    infoArea.setRows(5);
+	infoArea.setWrapStyleWord(true);
+	  jScrollPane1 = new JScrollPane(infoArea);
+	  
+	infoArea.setBounds(120, 210, 350, 130);
+	infoArea.setFont(new Font("Calibri", Font.PLAIN, 20));
+
 	frame.getContentPane().add(infoArea);
+	
 	
 // Kolejna strona
 	
 	
 	btnAddUser = new JButton("Next");
-	btnAddUser.setBounds(400, 385, 70, 50);
+	btnAddUser.setBounds(480, 360, 80, 50);
 	btnAddUser.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			
@@ -202,7 +225,7 @@ public class NewUser {
 // Powrot do menu
 	
 	btnCancel = new JButton("Cancel");
-	btnCancel.setBounds(20, 385, 80, 50);
+	btnCancel.setBounds(20, 360, 80, 50);
 	btnCancel.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
 			frame.setVisible(false);
@@ -215,4 +238,9 @@ public class NewUser {
 
 	
 }
+
+	private void setDefaultCloseOperation(int exitOnClose) {
+		// TODO Auto-generated method stub
+		
+	}
 }
