@@ -45,7 +45,7 @@ public MainWindow(){
 
 private void initialize() {
     frame = new JFrame("Skills Matrix"); // nazwa okna
-	frame.setSize(300, 400);			//wielkosc okna 
+	frame.setSize(600, 500);			//wielkosc okna 
 	frame.setLocationRelativeTo(null);	//
 	frame.setResizable(false);  		 //okno nie zmienia rozmiarow
 	
@@ -129,14 +129,14 @@ private void initialize() {
         Image img = new ImageIcon(this.getClass().getResource("Siimage.png")).getImage();
         logo.setIcon(new ImageIcon(img));
         
-        logo.setBounds(70, 10, 140, 100);
+        logo.setBounds(225, 20, 140, 100);
         frame.getContentPane().add(logo);
 	
 	//dodwanie nowego pracownika
 	
     	btnNewUser = new JButton("New User");
-    	btnNewUser.setBounds(75, 140, 150, 40);
-    	btnNewUser.setFont(new Font("Calibri", Font.PLAIN, 25));
+    	btnNewUser.setBounds(187, 170, 226, 40);
+    	btnNewUser.setFont(new Font("Calibri", Font.BOLD, 20));
     	btnNewUser.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) {
     			new NewUser();
@@ -151,8 +151,8 @@ private void initialize() {
 	//cos tu bedzie
 	
 	btnReport = new JButton("Report");
-	btnReport.setBounds(75,210,150,40);
-	btnReport.setFont(new Font("Calibri", Font.PLAIN, 25));
+	btnReport.setBounds(187,240,226,40);
+	btnReport.setFont(new Font("Calibri", Font.BOLD, 20));
 	btnReport.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			new NewUser();
@@ -167,8 +167,8 @@ private void initialize() {
 	//zamkniecie apki
 	
 	btnClose = new JButton("Close");
-	btnClose.setBounds(75,280,150,40);
-	btnClose.setFont(new Font("Calibri", Font.PLAIN, 25));
+	btnClose.setBounds(187,310,226,40);
+	btnClose.setFont(new Font("Calibri", Font.BOLD, 20));
 	frame.getContentPane().add(btnClose);
 	btnClose.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent arg0) {
